@@ -2,9 +2,6 @@ package noTrump;
 
 import java.util.ArrayList;
 
-import trump.Card;
-import trump.Hand;
-
 public class NoTrump {
 
 	public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class NoTrump {
 		}
 
         // ゲームの準備をする
-        master.prepareGame(createTrump());
+        master.prepareGame(NoTrumpCard.createTrump());
 
 
         DeciedCard deciedCard = master.auction();
@@ -38,24 +35,7 @@ public class NoTrump {
 		}
 
 	}
-	public static Hand createTrump(){
-		Hand trump = new Hand();
-        trump.addCard(new NoTrumpCard(Card.SUIT_CLUB, 1));
-        trump.addCard(new NoTrumpCard(Card.SUIT_DIAMOND, 1));
-        trump.addCard(new NoTrumpCard(Card.SUIT_HEART, 1));
-        trump.addCard(new NoTrumpCard(Card.SUIT_SPADE, 1));
-        trump.addCard(new NoTrumpCard(Card.SUIT_SPADE, 3));
-        trump.addCard(new NoTrumpJoker());
 
-		for (int number = 5; number <= Card.CARD_NUM; number++)
-        {
-            trump.addCard(new NoTrumpCard(Card.SUIT_CLUB, number));
-            trump.addCard(new NoTrumpCard(Card.SUIT_DIAMOND, number));
-            trump.addCard(new NoTrumpCard(Card.SUIT_HEART, number));
-            trump.addCard(new NoTrumpCard(Card.SUIT_SPADE, number));
-        }
-		return trump;
-	}
 	public static ArrayList<NoTrumpPlayer> CreatePlayers(NoTrumpMaster master,NoTrumpTable table,NoTrumpRule rule){
 	    ArrayList<NoTrumpPlayer> players = new ArrayList<NoTrumpPlayer>();
 
