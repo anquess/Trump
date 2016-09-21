@@ -40,16 +40,12 @@ public class NoTrump {
 	    ArrayList<NoTrumpPlayer> players = new ArrayList<NoTrumpPlayer>();
 
 		// プレイヤーの生成
-	    NoTrumpPlayer player1 = new NoTrumpPlayer("村田", master, table, rule, null, null);
-	    NoTrumpPlayer player2 = new NoTrumpPlayer("山田", master, table, rule, player1, null);
-	    player1.setPaetner(player2);
-	    NoTrumpPlayer player3  = new NoTrumpPlayer("斎藤", master, table, rule, null, null);
-	    NoTrumpPlayer player4 = new NoTrumpPlayer("蓮太郎", master, table, rule,player3,null);
-	    player3.setPaetner(player4);
-	    players.add(player1);
-	    players.add(player2);
-	    players.add(player3);
-	    players.add(player4);
+	    NoTrumpPlayer[] player = new NoTrumpPlayer[4];
+	    for(int i=0;i<4;i++){
+	    	player[i] = new NoTrumpPlayer("プレイヤー" + i, master, table, rule, null, null);
+	    	player[i].setPaetner(player[(i+2)%4]);
+	    	players.add(player[i]);
+	    }
 
 	    return players;
 	}

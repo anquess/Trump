@@ -18,7 +18,7 @@ import trump.Hand;
 public class NoTrumpCardTest {
 
 	@RunWith(Theories.class)
-	public static class カードを作るテスト{
+	public static class トランプを作るテスト{
 
 		static class Fixture{
 			int		position_;
