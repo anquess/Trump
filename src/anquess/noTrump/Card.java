@@ -17,8 +17,8 @@ public class Card {
 		return num_;
 	}
 
-	public int getSuit() {
-		return suit_.getSuit();
+	public Suit getSuit() {
+		return suit_;
 	}
 
 	@Override

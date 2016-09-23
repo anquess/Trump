@@ -57,9 +57,9 @@ public class CardTest {
 
 		@Theory
 		public void 指定されたカードのスートを返す(Param p) {
-			int expected = p.suit_.getSuit();
+			Suit expected = p.suit_;
 			Card card = new Card(p.suit_,p.num_);
-			int actual = card.getSuit();
+			Suit actual = card.getSuit();
 			assertThat(actual,is(expected));
 		}
 
