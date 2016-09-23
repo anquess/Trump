@@ -1,6 +1,6 @@
 package anquess.noTrump;
 
-import static anquess.noTrump.Card.*;
+import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 

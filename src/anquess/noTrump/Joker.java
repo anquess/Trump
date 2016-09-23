@@ -3,7 +3,7 @@ package anquess.noTrump;
 public class Joker extends Card {
 
 	public Joker() {
-		super(0, 0);
+		super(Suit.JOKER, 0);
 	}
 
 	@Override

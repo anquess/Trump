@@ -1,6 +1,6 @@
 package anquess.noTrump;
 
-import static anquess.noTrump.Card.*;
+import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
@@ -19,7 +19,7 @@ public class CardTest {
 		public void 複数のスペードの1を同じと検証(){
 			Card actual = new Card(SPADE,1);
 			Card expected = new Card(SPADE,1);
-			assertThat(actual,is(expected));			
+			assertThat(actual,is(expected));
 		}
 	}
 	@RunWith(Theories.class)
@@ -35,11 +35,11 @@ public class CardTest {
 		};
 
 		static class Param{
-			int suit_;
+			Suit suit_;
 			int num_;
 			String msg_;
 
-			Param(int suit, int num,String msg){
+			Param(Suit suit, int num,String msg){
 				suit_	= suit;
 				num_	= num;
 				msg_	= msg;
@@ -57,7 +57,7 @@ public class CardTest {
 
 		@Theory
 		public void 指定されたカードのスートを返す(Param p) {
-			int expected = p.suit_;
+			int expected = p.suit_.getSuit();
 			Card card = new Card(p.suit_,p.num_);
 			int actual = card.getSuit();
 			assertThat(actual,is(expected));

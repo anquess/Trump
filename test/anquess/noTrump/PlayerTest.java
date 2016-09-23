@@ -1,6 +1,6 @@
 package anquess.noTrump;
 
-import static anquess.noTrump.Card.*;
+import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
@@ -34,5 +34,5 @@ public class PlayerTest {
 		String actual	= player.getName();
 		assertThat(actual,is(expected));
 	}
-	
+
 }
