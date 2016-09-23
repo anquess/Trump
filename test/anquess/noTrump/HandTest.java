@@ -79,7 +79,7 @@ public class HandTest {
 		@Test
 		public void createTrumpTest31枚目(){
 			Card actual		= trump.pickUp(30);
-			Card expected	= new Card(DIA,12);
+			Card expected	= new Card(Suit.DIA,12);
 			assertThat(actual,is(expected));
 		}
 

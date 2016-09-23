@@ -1,7 +1,7 @@
 package anquess.noTrump;
 
 public enum Suit {
-	JOKER{
+	JOKER(){
 		@Override
 		public String toString(){
 			return "JK";
@@ -26,7 +26,7 @@ public enum Suit {
 					new Card(SPADE,6),
 					new Card(SPADE,7),
 					new Card(SPADE,8),
-					new Card(SPADE,8),
+					new Card(SPADE,9),
 					new Card(SPADE,10),
 					new Card(SPADE,11),
 					new Card(SPADE,12),
@@ -34,68 +34,25 @@ public enum Suit {
 			return card;
 		}
 	},
-	HEART{
-		@Override
-		public String toString(){
-			return "H";
-		}
-		@Override
-		public Card[] creatCard() {
-			Card[] card = {
-					new Card(HEART,1),
-					new Card(HEART,5),
-					new Card(HEART,6),
-					new Card(HEART,7),
-					new Card(HEART,8),
-					new Card(HEART,8),
-					new Card(HEART,10),
-					new Card(HEART,11),
-					new Card(HEART,12),
-					new Card(HEART,13),};
-			return card;
-		}
-	},
-	DIA{
-		@Override public String toString(){
-			return "D";
-		}
-		@Override
-		public Card[] creatCard() {
-			Card[] card = {
-					new Card(DIA,1),
-					new Card(DIA,5),
-					new Card(DIA,6),
-					new Card(DIA,7),
-					new Card(DIA,8),
-					new Card(DIA,8),
-					new Card(DIA,10),
-					new Card(DIA,11),
-					new Card(DIA,12),
-					new Card(DIA,13),};
-			return card;
-		};
-
-	},
-	CLUB{
-		@Override public String toString(){
-			return "C";
-		}
-		@Override
-		public Card[] creatCard() {
-			Card[] card = {
-					new Card(CLUB,1),
-					new Card(CLUB,5),
-					new Card(CLUB,6),
-					new Card(CLUB,7),
-					new Card(CLUB,8),
-					new Card(CLUB,8),
-					new Card(CLUB,10),
-					new Card(CLUB,11),
-					new Card(CLUB,12),
-					new Card(CLUB,13),};
-			return card;
-		};
-
+	HEART,DIA,CLUB;
+	public Card[] creatCard(){
+		Card[] card = {
+				new Card(this,1),
+				new Card(this,5),
+				new Card(this,6),
+				new Card(this,7),
+				new Card(this,8),
+				new Card(this,9),
+				new Card(this,10),
+				new Card(this,11),
+				new Card(this,12),
+				new Card(this,13),};
+		return card;
 	};
-	public abstract Card[] creatCard();
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString().charAt(0));
+		return sb.toString();
+	}
 }
