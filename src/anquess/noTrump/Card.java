@@ -1,15 +1,15 @@
 package anquess.noTrump;
 
 public class Card {
-	private SuitNum suit_;
+	private Suit suit_;
 	private int num_;
 
 	@Deprecated
 	public Card(int suit, int num) {
-		this.suit_	= SuitNum.values()[suit];
+		this.suit_	= Suit.values()[suit];
 		this.num_	= num;
 	}
-	public Card(SuitNum suit,int num){
+	public Card(Suit suit,int num){
 		this.suit_	= suit;
 		this.num_	= num;
 	}

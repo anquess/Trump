@@ -1,6 +1,6 @@
 package anquess.noTrump;
 
-public enum SuitNum {
+public enum Suit {
 	JOKER{
 		@Override public String toString(){
 			return "JK";
