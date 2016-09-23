@@ -1,11 +1,15 @@
 package anquess.noTrump;
 
 public class Card {
-
-	private int suit_;
+	private SuitNum suit_;
 	private int num_;
 
+	@Deprecated
 	public Card(int suit, int num) {
+		this.suit_	= SuitNum.values()[suit];
+		this.num_	= num;
+	}
+	public Card(SuitNum suit,int num){
 		this.suit_	= suit;
 		this.num_	= num;
 	}
@@ -19,26 +23,14 @@ public class Card {
 	}
 
 	public int getSuit() {
-		return suit_;
+		return suit_.getSuit();
 	}
 
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		// suit
-		switch(suit_){
-		case SPADE:
-			sb.append("S");
-			break;
-		case HEART:
-			sb.append("H");
-			break;
-		case DIA:
-			sb.append("D");
-			break;
-		default:
-			sb.append("C");
-		}
+		sb.append(suit_.toString());
 
 		// num
 		switch(num_){
@@ -75,6 +67,4 @@ public class Card {
 
 		return false;
 	}
-
-
 }
