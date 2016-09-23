@@ -115,6 +115,7 @@ public enum Suit {
 		};
 
 	};
+	@Deprecated
 	public abstract int getSuit();
 	public Card[] createCard() {
 		// TODO 自動生成されたメソッド・スタブ
