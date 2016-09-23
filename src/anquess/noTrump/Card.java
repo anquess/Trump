@@ -4,11 +4,6 @@ public class Card {
 	private Suit suit_;
 	private int num_;
 
-	@Deprecated
-	public Card(int suit, int num) {
-		this.suit_	= Suit.values()[suit];
-		this.num_	= num;
-	}
 	public Card(Suit suit,int num){
 		this.suit_	= suit;
 		this.num_	= num;
@@ -34,6 +29,8 @@ public class Card {
 
 		// num
 		switch(num_){
+		case 0:
+			break;
 		case 1:
 			sb.append("A");
 			break;

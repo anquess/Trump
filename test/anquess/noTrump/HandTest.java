@@ -65,35 +65,35 @@ public class HandTest {
 		@Test
 		public void createTrumpTest1枚目(){
 			Card actual		= trump.pickUp(0);
-			Card expected	= new Card(SPADE,1);
+			Card expected	= new Card(JOKER,0);
 			assertThat(actual,is(expected));
 		}
 
 		@Test
-		public void createTrumpTest4枚目(){
-			Card actual		= trump.pickUp(3);
-			Card expected	= new Card(CLUB,1);
+		public void createTrumpTest13枚目(){
+			Card actual		= trump.pickUp(12);
+			Card expected	= new Card(HEART,1);
 			assertThat(actual,is(expected));
 		}
 
 		@Test
-		public void createTrumpTest41枚目(){
-			Card actual		= trump.pickUp(40);
-			Card expected	= new Card(CLUB,13);
+		public void createTrumpTest31枚目(){
+			Card actual		= trump.pickUp(30);
+			Card expected	= new Card(DIA,12);
 			assertThat(actual,is(expected));
 		}
 
 		@Test
 		public void createTrumpTest42枚目(){
 			Card actual		= trump.pickUp(41);
-			Card expected	= new Joker();
+			Card expected	= new Card(CLUB,13);
 			assertThat(actual,is(expected));
 		}
 
 		@Test
 		public void shuffleして1000回中1枚目がSAでないの100回以下(){
 			int saCount = 0;
-			Card spadeA = new Card(SPADE,1);
+			Card spadeA = new Card(JOKER,0);
 			assertThat(trump.view(0),is(spadeA));
 			for(int i = 0 ; i < 1000;i++){
 				trump.shuffle();
