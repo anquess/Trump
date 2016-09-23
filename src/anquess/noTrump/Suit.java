@@ -7,10 +7,6 @@ public enum Suit {
 			return "JK";
 		}
 		@Override
-		public int getSuit(){
-			return 0;
-		}
-		@Override
 		public Card[] creatCard() {
 			Card[] card = { new Card(JOKER,0)};
 			return card;
@@ -20,10 +16,6 @@ public enum Suit {
 		@Override
 		public String toString(){
 			return "S";
-		}
-		@Override
-		public int getSuit(){
-			return 1;
 		}
 		@Override
 		public Card[] creatCard() {
@@ -48,10 +40,6 @@ public enum Suit {
 			return "H";
 		}
 		@Override
-		public int getSuit(){
-			return 2;
-		}
-		@Override
 		public Card[] creatCard() {
 			Card[] card = {
 					new Card(HEART,1),
@@ -70,9 +58,6 @@ public enum Suit {
 	DIA{
 		@Override public String toString(){
 			return "D";
-		}
-		@Override public int getSuit(){
-			return 3;
 		}
 		@Override
 		public Card[] creatCard() {
@@ -95,9 +80,6 @@ public enum Suit {
 		@Override public String toString(){
 			return "C";
 		}
-		@Override public int getSuit(){
-			return 4;
-		}
 		@Override
 		public Card[] creatCard() {
 			Card[] card = {
@@ -115,11 +97,5 @@ public enum Suit {
 		};
 
 	};
-	@Deprecated
-	public abstract int getSuit();
-	public Card[] createCard() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 	public abstract Card[] creatCard();
 }
