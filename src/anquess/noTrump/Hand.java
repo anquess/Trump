@@ -20,9 +20,7 @@ public class Hand {
 		}
 	}
 	public void add(List<Card> cards){
-		for(Card card:cards){
-			cards_.add(card);
-		}
+		cards_.addAll(cards);
 	}
 	public Card view(int i) {
 		return cards_.get(i);
@@ -42,7 +40,6 @@ public class Hand {
 			List<Card> cards = suit.creatCards();
 			trump.add(cards);
 		}
-
 		return trump;
 	}
 

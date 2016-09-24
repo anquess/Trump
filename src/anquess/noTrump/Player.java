@@ -7,6 +7,10 @@ public class Player {
 	public Player(){
 		myHand_ = new Hand();
 	}
+	public Player(String name){
+		this();
+		name_ = name;
+	}
 
 	public void recieve(Card card) {
 		myHand_.add(card);
@@ -27,7 +31,4 @@ public class Player {
 	public void setName(String name) {
 		name_ = name;
 	}
-
-
-
 }

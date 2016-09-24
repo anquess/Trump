@@ -9,13 +9,13 @@ import org.junit.Test;
 
 public class PlayerTest {
 	Player player;
-	Card card;
-
+	Card card_;
+	
 	@Before
 	public void setUp(){
 		player 		= new Player();
-		card		= new Card(SPADE,1);
-		player.recieve(card);
+		card_		= new Card(SPADE,1);
+		player.recieve(card_);
 		player.setName("Test");
 	}
 
