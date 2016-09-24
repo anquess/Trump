@@ -53,7 +53,7 @@ public class MasterTest {
 
 		@Test
 		public void トランプを配れるか確認(){
-			master.distribute();
+			master.distributeTrump();
 			int expected = 10;
 			int actual;
 			for(int i =0 ; i <4;i++){

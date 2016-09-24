@@ -25,7 +25,7 @@ public class Master {
 		players_.add(player);
 	}
 
-	public void distribute() {
+	public void distributeTrump() {
 		int i = 0;
 		for(;trump_.size() != 2;){
 			getPlayer(i%4).recieve(trump_.pickUp(0));
@@ -36,7 +36,5 @@ public class Master {
 	public int trumpSize(){
 		return trump_.size();
 	}
-
-
 
 }
