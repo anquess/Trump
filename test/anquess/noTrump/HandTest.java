@@ -8,6 +8,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
@@ -52,7 +55,7 @@ public class HandTest {
 			assertThat(actual,is(expected));
 		}
 	}
-
+	@RunWith(Theories.class)
 	public static class createTrumpTest{
 
 		Hand trump;
@@ -62,31 +65,30 @@ public class HandTest {
 			trump = createTrump();
 		}
 
-		@Test
-		public void createTrumpTest1枚目(){
-			Card actual		= trump.pickUp(0);
-			Card expected	= new Card(JOKER,0);
-			assertThat(actual,is(expected));
-		}
+		static class Fixture{
+			int pickNum_;
+			Card expectedCard_;
+			String msg_;
 
-		@Test
-		public void createTrumpTest13枚目(){
-			Card actual		= trump.pickUp(12);
-			Card expected	= new Card(HEART,1);
-			assertThat(actual,is(expected));
-		}
+			Fixture(int pickNum,Card expectedCard){
+				pickNum_ = pickNum;
+				msg_ = (pickNum + 1) + "枚目";
+				expectedCard_ = expectedCard;
+			}
+		};
 
-		@Test
-		public void createTrumpTest31枚目(){
-			Card actual		= trump.pickUp(30);
-			Card expected	= new Card(Suit.DIA,12);
-			assertThat(actual,is(expected));
-		}
+		@DataPoints
+		public static Fixture PARAMs[] = {
+				new Fixture(0,new Card(JOKER,0)),
+				new Fixture(12,new Card(HEART,1)),
+				new Fixture(30,new Card(DIA,12)),
+				new Fixture(41,new Card(CLUB,13)),
+		};
 
-		@Test
-		public void createTrumpTest42枚目(){
-			Card actual		= trump.pickUp(41);
-			Card expected	= new Card(CLUB,13);
+		@Theory
+		public void createTrumpをTest(Fixture p){
+			Card actual		= trump.pickUp(p.pickNum_);
+			Card expected	= p.expectedCard_;
 			assertThat(actual,is(expected));
 		}
 

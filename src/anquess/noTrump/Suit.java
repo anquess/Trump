@@ -1,10 +1,19 @@
 package anquess.noTrump;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Suit {
 	JOKER(){
 		@Override
 		public String toString(){
 			return "JK";
+		}
+		@Override
+		public List<Card> creatCards(){
+			List<Card> cards = new ArrayList<Card>();
+			cards.add(new Card(JOKER,0));
+			return cards;
 		}
 		@Override
 		public Card[] creatCard() {
@@ -14,8 +23,10 @@ public enum Suit {
 	},
 	SPADE{
 		@Override
-		public String toString(){
-			return "S";
+		public List<Card> creatCards(){
+			List<Card> cards = super.creatCards();
+			cards.add(new Card(SPADE,3));
+			return cards;
 		}
 		@Override
 		public Card[] creatCard() {
@@ -35,6 +46,13 @@ public enum Suit {
 		}
 	},
 	HEART,DIA,CLUB;
+	public List<Card> creatCards(){
+		List<Card> cards = new ArrayList<Card>();
+		cards.add(new Card(this,1));
+		for(int i = 5; i <= 13; i++)		cards.add(new Card(this,i));
+		return cards;
+	};
+	@Deprecated
 	public Card[] creatCard(){
 		Card[] card = {
 				new Card(this,1),

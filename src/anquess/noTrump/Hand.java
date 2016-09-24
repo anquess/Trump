@@ -19,7 +19,11 @@ public class Hand {
 			cards_.add(card);
 		}
 	}
-
+	public void add(List<Card> cards){
+		for(Card card:cards){
+			cards_.add(card);
+		}
+	}
 	public Card view(int i) {
 		return cards_.get(i);
 	}
@@ -35,7 +39,7 @@ public class Hand {
 		Hand trump = new Hand();
 
 		for(Suit suit:Suit.values()){
-			Card[] cards = suit.creatCard();
+			List<Card> cards = suit.creatCards();
 			trump.add(cards);
 		}
 

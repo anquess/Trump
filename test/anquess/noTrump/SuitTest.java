@@ -6,6 +6,8 @@ import static anquess.noTrump.SuitTest.Fixture.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -30,7 +32,7 @@ public class SuitTest {
 		int num_[];
 
 		static final int[] JK_NUM		= {0};
-		static final int[] SP_NUM		= {1,3,5,6,7,8,9,10,11,12,13};
+		static final int[] SP_NUM		= {1,5,6,7,8,9,10,11,12,13,3};
 		static final int[] OTHER_NUM	= {1,5,6,7,8,9,10,11,12,13};
 
 
@@ -54,10 +56,10 @@ public class SuitTest {
 
 	@Theory
 	public void creatCardTest(Fixture p){
-		Card[] cards = p.suit_.creatCard();
+		List<Card> cards = p.suit_.creatCards();
 		int i = 0;
 		for(int expected:p.num_){
-			int actual = cards[i].getNum();
+			int actual = cards.get(i).getNum();
 			assertThat(p.suit_.toString(),actual,is(expected));
 			i++;
 		}
