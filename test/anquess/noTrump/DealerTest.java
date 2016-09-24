@@ -9,30 +9,30 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
-public class MasterTest {
+public class DealerTest {
 
 	public static class プレイヤーの登録{
-		Master master;
+		Dealer dealer;
 		Player player;
 
 		@Before
 		public void setUp(){
-			master = new Master();
+			dealer = new Dealer();
 			player = new Player();
 		}
 
 		@Test
 		public void registPlayerTest(){
 			Player expected = player;
-			master.registerPlayer(player);
-			Player actual = master.getPlayer(0);
+			dealer.registerPlayer(player);
+			Player actual = dealer.getPlayer(0);
 			assertThat(actual,is(expected));
 		}
 
 	}
 
 	public static class ゲームの準備を確認{
-		Master master;
+		Dealer dealer;
 		Player player1;
 		Player player2;
 		Player player3;
@@ -40,34 +40,34 @@ public class MasterTest {
 
 		@Before
 		public void setUp(){
-			master = new Master();
+			dealer = new Dealer();
 			player1 = new Player("1");
 			player2 = new Player("2");
 			player3 = new Player("3");
 			player4 = new Player("4");
-			master.registerPlayer(player1);
-			master.registerPlayer(player2);
-			master.registerPlayer(player3);
-			master.registerPlayer(player4);
+			dealer.registerPlayer(player1);
+			dealer.registerPlayer(player2);
+			dealer.registerPlayer(player3);
+			dealer.registerPlayer(player4);
 		}
 
 		@Test(expected = IllegalArgumentException.class)
 		public void 上限より多いプレイヤー5人目を追加してエラーがでるか(){
-			master.registerPlayer(new Player("5"));
+			dealer.registerPlayer(new Player("5"));
 		}
 
 		@Test
 		public void トランプを配れるか確認(){
-			master.distributeTrump();
+			dealer.distributeTrump();
 			int expected = 10;
 			int actual;
 			for(int i =0 ; i <4;i++){
-				actual = master.getPlayer(0).getHandNum();
+				actual = dealer.getPlayer(0).getHandNum();
 				assertThat("player" + i,actual,is(expected));
 			}
 			expected = 2;
-			actual = master.trumpSize();
-			assertThat("master",actual,is(expected));
+			actual = dealer.trumpSize();
+			assertThat("dealer",actual,is(expected));
 		}
 	}
 

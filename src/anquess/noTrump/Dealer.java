@@ -3,12 +3,12 @@ package anquess.noTrump;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Master {
+public class Dealer {
 
 	private List<Player> players_;
 	private Hand trump_;
 
-	public Master(){
+	public Dealer(){
 		players_ = new ArrayList<Player>(4);
 		trump_ = Hand.createTrump();
 		trump_.shuffle();
