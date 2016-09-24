@@ -8,11 +8,6 @@ public class Card {
 		this.suit_	= suit;
 		this.num_	= num;
 	}
-	public static final int SPADE	= 1;
-	public static final int HEART	= 2;
-	public static final int DIA		= 3;
-	public static final int CLUB	= 4;
-
 	public int getNum() {
 		return num_;
 	}

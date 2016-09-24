@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Suit {
+	CLUB,DIA,HEART,
+	SPADE{
+		@Override
+		public List<Card> creatCards(){
+			List<Card> cards = super.creatCards();
+			cards.add(new Card(SPADE,3));
+			return cards;
+		}
+	},
 	JOKER(){
 		@Override
 		public String toString(){
@@ -15,20 +24,7 @@ public enum Suit {
 			cards.add(new Card(JOKER,0));
 			return cards;
 		}
-	},
-	SPADE{
-		@Override
-		public String toString(){
-			return "S";
-		}
-		@Override
-		public List<Card> creatCards(){
-			List<Card> cards = super.creatCards();
-			cards.add(new Card(SPADE,3));
-			return cards;
-		}
-	},
-	HEART,DIA,CLUB;
+	};
 	public List<Card> creatCards(){
 		List<Card> cards = new ArrayList<Card>();
 		cards.add(new Card(this,1));

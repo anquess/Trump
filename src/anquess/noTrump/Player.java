@@ -1,5 +1,7 @@
 package anquess.noTrump;
 
+import java.util.List;
+
 public class Player {
 	Hand	myHand_;
 	String	name_;
@@ -13,6 +15,12 @@ public class Player {
 	}
 
 	public void recieve(Card card) {
+		myHand_.add(card);
+	}
+	public void recieve(Card[] card) {
+		myHand_.add(card);
+	}
+	public void recieve(List<Card> card) {
 		myHand_.add(card);
 	}
 

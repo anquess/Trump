@@ -79,10 +79,11 @@ public class HandTest {
 
 		@DataPoints
 		public static Fixture PARAMs[] = {
-				new Fixture(0,new Card(JOKER,0)),
-				new Fixture(12,new Card(HEART,1)),
-				new Fixture(30,new Card(DIA,12)),
-				new Fixture(41,new Card(CLUB,13)),
+				new Fixture(0,new Card(CLUB,1)),
+				new Fixture(12,new Card(DIA,6)),
+				new Fixture(29,new Card(HEART,13)),
+				new Fixture(40,new Card(SPADE,3)),
+				new Fixture(41,new Card(JOKER,0)),
 		};
 
 		@Theory
@@ -95,11 +96,11 @@ public class HandTest {
 		@Test
 		public void shuffleして1000回中1枚目がSAでないの100回以下(){
 			int saCount = 0;
-			Card spadeA = new Card(JOKER,0);
-			assertThat(trump.view(0),is(spadeA));
+			Card clubA = new Card(CLUB,1);
+			assertThat(trump.view(0),is(clubA));
 			for(int i = 0 ; i < 1000;i++){
 				trump.shuffle();
-				if(trump.view(0).equals(spadeA)) saCount++;
+				if(trump.view(0).equals(clubA)) saCount++;
 			}
 			String msg = saCount + "回";
 			boolean actual = (saCount < 50);

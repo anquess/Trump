@@ -37,8 +37,7 @@ public class Hand {
 		Hand trump = new Hand();
 
 		for(Suit suit:Suit.values()){
-			List<Card> cards = suit.creatCards();
-			trump.add(cards);
+			trump.add(suit.creatCards());
 		}
 		return trump;
 	}
