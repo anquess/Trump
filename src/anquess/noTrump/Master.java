@@ -9,7 +9,7 @@ public class Master {
 	private Hand trump_;
 
 	public Master(){
-		players_ = new ArrayList<Player>();
+		players_ = new ArrayList<Player>(4);
 		trump_ = Hand.createTrump();
 		trump_.shuffle();
 	}
@@ -22,6 +22,7 @@ public class Master {
 	}
 
 	public void registerPlayer(Player player){
+		if(players_.size() == 4) throw new IllegalArgumentException("プレイヤーは4人まで");
 		players_.add(player);
 	}
 

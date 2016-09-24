@@ -5,6 +5,9 @@ import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
@@ -26,7 +29,6 @@ public class HandTest {
 			hand.add(card);
 			card	= new Card(CLUB,1);
 			hand.add(card);
-
 		}
 
 		@Test
@@ -36,6 +38,22 @@ public class HandTest {
 			Card actual = hand.pickUp(0);
 			assertThat(actual,is(expected));
 			assertThat(hand.size(),is(1));
+		}
+
+		@Test
+		public void handに配列で3枚追加して5になる(){
+			Card[] cards = {new Card(DIA,1),new Card(DIA,5),new Card(DIA,10)};
+			hand.add(cards);
+			assertThat(hand.size(),is(5));
+		}
+
+		@Test
+		public void handにListで2枚追加して4になる(){
+			List<Card> cards = new ArrayList<Card>();
+			cards.add(new Card(DIA,1));
+			cards.add(new Card(DIA,5));
+			hand.add(cards);
+			assertThat(hand.size(),is(4));
 		}
 
 		@Test

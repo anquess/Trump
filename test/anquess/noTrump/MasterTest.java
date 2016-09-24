@@ -51,6 +51,11 @@ public class MasterTest {
 			master.registerPlayer(player4);
 		}
 
+		@Test(expected = IllegalArgumentException.class)
+		public void 上限より多いプレイヤー5人目を追加してエラーがでるか(){
+			master.registerPlayer(new Player("5"));
+		}
+
 		@Test
 		public void トランプを配れるか確認(){
 			master.distributeTrump();
