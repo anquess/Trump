@@ -3,7 +3,7 @@ package anquess.noTrump;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Suit {
+public enum Suit{
 	CLUB,DIA,HEART,
 	SPADE{
 		@Override

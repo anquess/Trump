@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -51,4 +52,30 @@ public class BidTest {
 			assertThat("ノルマ;" + p.norma_,actualNorma,is(expectedNorma));
 		}
 	}
+
+	public static class Bidオブジェクトの比較{
+		@Test
+		public void スペード6とスペード7を比較しスペード7のほうが大きい(){
+			Bid spade6 = new Bid(SPADE,6);
+			Bid spade7 = new Bid(SPADE,7);
+			Bid actual = spade6;
+			Bid expected = spade7;
+			if(spade6.compareTo(spade7) > 0) actual = spade6;
+			if(spade6.compareTo(spade7) < 0) actual = spade7;
+			assertThat(actual,is(expected));
+		}
+		@Test
+		public void クラブ6とハート6を比較しハードの6ほうが大きい(){
+			Bid club6 = new Bid(CLUB,6);
+			Bid heart6 = new Bid(HEART,6);
+			Bid actual = club6;
+			Bid expected = heart6;
+			if(club6.compareTo(heart6) > 0) actual = club6;
+			if(club6.compareTo(heart6) < 0) actual = heart6;
+			assertThat(actual,is(expected));
+		}
+
+	}
+
+
 }
