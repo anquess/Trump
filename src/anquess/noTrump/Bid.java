@@ -48,8 +48,8 @@ public class Bid implements Comparable<Bid>{
 	@Override
 	public int compareTo(Bid o) {
 		if(this.norma_ == o.norma_){
-			return this.Suit_.compareTo(o.Suit_);
+			return Suit_.compareTo(o.Suit_);
 		}
-		return this.norma_ - o.norma_;
+		return norma_ - o.norma_;
 	}
 }

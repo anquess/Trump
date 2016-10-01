@@ -71,4 +71,45 @@ public class CardTest {
 			assertThat(actual,is(expected));
 		}
 	}
+		@RunWith(Theories.class)
+		public static class カードの比較{
+
+		@DataPoints
+		public static Fixture PARAMs[] = {
+				new Fixture("H5<H7",new Card(HEART,5),new Card(HEART,7),new Card(HEART,7)),
+				new Fixture("H7>H5",new Card(HEART,7),new Card(HEART,5),new Card(HEART,7)),
+				new Fixture("H5>S7",new Card(HEART,5),new Card(SPADE,7),new Card(HEART,5)),
+				new Fixture("S5>H7",new Card(SPADE,5),new Card(HEART,7),new Card(SPADE,5)),
+				new Fixture("H5<HA",new Card(HEART,5),new Card(HEART,1),new Card(HEART,1)),
+				new Fixture("HA>H5",new Card(HEART,1),new Card(HEART,5),new Card(HEART,1)),
+				new Fixture("HA<SA",new Card(HEART,1),new Card(SPADE,1),new Card(SPADE,1)),
+				new Fixture("SA>HA",new Card(SPADE,1),new Card(HEART,1),new Card(SPADE,1)),
+				new Fixture("HA<JK",new Card(HEART,1),new Card(JOKER,0),new Card(JOKER,0)),
+				new Fixture("JK>HA",new Card(JOKER,0),new Card(HEART,1),new Card(JOKER,0)),
+				new Fixture("SA>JK",new Card(SPADE,1),new Card(JOKER,0),new Card(SPADE,1)),
+				new Fixture("JK<SA",new Card(JOKER,0),new Card(SPADE,1),new Card(SPADE,1)),
+		};
+
+		@Theory
+		public void パラメータによる比較(Fixture p){
+			Card actual = p.card1_;
+			Card expected = p.expected_;
+			if(p.card1_.compareTo(p.card2_) > 0) actual = p.card1_;
+			if(p.card1_.compareTo(p.card2_) < 0) actual = p.card2_;
+			assertThat(p.msg_,actual,is(expected));
+		}
+		public static class Fixture{
+			String msg_;
+			Card card1_;
+			Card card2_;
+			Card expected_;
+			Fixture(String msg,Card card1,Card card2,Card expected){
+				msg_		= msg;
+				card1_		= card1;
+				card2_		= card2;
+				expected_	= expected;
+			}
+		}
+	}
+
 }
