@@ -25,22 +25,22 @@ public class PlayerTest {
 	@Test
 	public void カードを1枚受け取って1枚目を検証 (){
 		Card expected	= new Card(SPADE,1);
-		assertThat(player.getHandNum(),is(1));
+		assertThat(player.getHandSize(),is(1));
 		Card actual = player.put(0);
 		assertThat(actual,is(expected));
-		assertThat(player.getHandNum(),is(0));
+		assertThat(player.getHandSize(),is(0));
 	}
 
 	@Test
 	public void カードを配列で2枚受け取って1枚目と2枚目を検証 (){
 		Card[] expected	= {new Card(SPADE,3),new Card(HEART,13)};
 		player.recieve(expected);
-		assertThat(player.getHandNum(),is(3));
+		assertThat(player.getHandSize(),is(3));
 		Card actual = player.put(1);
 		assertThat("1枚目",actual,is(expected[0]));
 		actual = player.put(1);
 		assertThat("2枚目",actual,is(expected[1]));
-		assertThat(player.getHandNum(),is(1));
+		assertThat(player.getHandSize(),is(1));
 	}
 
 	@Test
@@ -49,19 +49,19 @@ public class PlayerTest {
 			expected.add(new Card(SPADE,3));
 			expected.add(new Card(HEART,13));
 		player.recieve(expected);
-		assertThat(player.getHandNum(),is(3));
+		assertThat(player.getHandSize(),is(3));
 		Card actual = player.put(1);
 		assertThat("1枚目",actual,is(expected.get(0)));
 		actual = player.put(1);
 		assertThat("2枚目",actual,is(expected.get(1)));
-		assertThat(player.getHandNum(),is(1));
+		assertThat(player.getHandSize(),is(1));
 	}
 
 
 	@Test
 	public void setNameで設定した名前がgetNameで検証(){
 		String expected	= "Test";
-		String actual	= player.getName();
+		String actual	= player.toString();
 		assertThat(actual,is(expected));
 	}
 

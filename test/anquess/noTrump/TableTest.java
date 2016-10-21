@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TableTest {
-	Table table;
+	Trick table;
 	Card[] card;
 
 	@Before
 	public void setUp(){
-		table = new Table();
+		table = new Trick();
 		card = new Card[]{
 				new Card(SPADE,1),
 				new Card(SPADE,2),
@@ -22,20 +22,6 @@ public class TableTest {
 				new Card(SPADE,5),
 				new Card(SPADE,6),
 		};
-	}
-
-	@Test
-	public void テーブルにカード置いた後の数を検証(){
-		int actual;
-		int expected;
-		String msg;
-		for(int i = 0; i < 6; i++){
-			table.put(card[i]);
-			actual		= table.getCardNum();
-			expected	= (i % 4) + 1;
-			msg = (i + 1) + "回目";
-			assertThat(msg,actual,is(expected));
-		}
 	}
 
 	@Test

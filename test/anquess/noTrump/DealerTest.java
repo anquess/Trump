@@ -62,7 +62,7 @@ public class DealerTest {
 			int expected = 10;
 			int actual;
 			for(int i =0 ; i <4;i++){
-				actual = dealer.getPlayer(0).getHandNum();
+				actual = dealer.getPlayer(0).getHandSize();
 				assertThat("player" + i,actual,is(expected));
 			}
 			expected = 2;

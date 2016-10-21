@@ -45,6 +45,7 @@ public class Card implements Comparable<Card>{
 		numToString(sb);
 		return sb.toString();
 	}
+
 	private void numToString(StringBuilder sb) {
 		switch(num_){
 		case 0:

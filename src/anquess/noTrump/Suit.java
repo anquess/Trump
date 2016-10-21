@@ -3,6 +3,10 @@ package anquess.noTrump;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * スートの列挙型(SPADE、HEART、DIA、CLUB、JOKER)
+ * @author anquess
+ */
 public enum Suit{
 	CLUB,DIA,HEART,
 	SPADE{
