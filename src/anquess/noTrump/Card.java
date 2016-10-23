@@ -9,22 +9,24 @@ import static anquess.noTrump.Suit.*;
  */
 public class Card implements Comparable<Card>{
 	private Suit suit_;
-	private int num_;
+	private int nUM_;
+	private Number num_;
+
 	/**
 	 * コンストラクタ
 	 * @param suit
-	 * @param num
+	 * @param nUM
 	 */
-	public Card(Suit suit,int num){
+	public Card(Suit suit,int nUM){
 		this.suit_	= suit;
-		this.num_	= num;
+		this.nUM_	= nUM;
 	}
 	/**
 	 * カードに書かれた数を取得
 	 * @return
 	 */
 	public int getNum() {
-		return num_;
+		return nUM_;
 	}
 	/**
 	 * カードに書かれたスーツを取得
@@ -47,7 +49,7 @@ public class Card implements Comparable<Card>{
 	}
 
 	private void numToString(StringBuilder sb) {
-		switch(num_){
+		switch(nUM_){
 		case 0:
 			break;
 		case 1:
@@ -66,7 +68,7 @@ public class Card implements Comparable<Card>{
 			sb.append("K");
 			break;
 		default:
-			sb.append(num_);
+			sb.append(nUM_);
 		}
 	}
 	/**
@@ -79,7 +81,7 @@ public class Card implements Comparable<Card>{
 		if(o == null) return false;
 		if(!(o instanceof Card)) return false;
 		Card card = (Card)o;
-		if((card.num_ == num_)&&(card.suit_ == suit_)) return true;
+		if((card.nUM_ == nUM_)&&(card.suit_ == suit_)) return true;
 		return false;
 	}
 	@Override
@@ -88,12 +90,12 @@ public class Card implements Comparable<Card>{
 		if(this.equals(new Card(SPADE,1)))return 1;
 		if(o.equals(new Card(JOKER,0)))return -1;
 		if(suit_ == o.suit_){
-			if(num_ == 1){
+			if(nUM_ == 1){
 				return 1;
-			}else if(o.num_ == 1){
+			}else if(o.nUM_ == 1){
 				return -1;
 			}
-				return num_ -o.num_;
+				return nUM_ -o.nUM_;
 		}
 		return 1;
 	}
