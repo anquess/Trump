@@ -23,6 +23,32 @@ public class CardTest {
 			assertThat(actual,is(expected));
 		}
 	}
+
+	public static class 切り札に変更{
+		@Test
+		public void 切り札スペードでスペード3で検証(){
+			Card sut = new Card(SPADE,N3);
+			sut.changeSpTrump(SPADE);
+			Card expected = new Card(SPADE,T3);
+			assertThat(sut,is(expected));
+		}
+		@Test
+		public void 切り札ハートでハートJで検証(){
+			Card sut = new Card(HEART,NJ);
+			sut.changeSpTrump(HEART);
+			Card expected = new Card(HEART,TSJ);
+			assertThat(sut,is(expected));
+		}
+		@Test
+		public void 切り札クラブでスペードJで検証(){
+			Card sut = new Card(SPADE,NJ);
+			sut.changeSpTrump(CLUB);
+			Card expected = new Card(SPADE,TPJ);
+			assertThat(sut,is(expected));
+		}
+
+
+	}
 	@RunWith(Theories.class)
 	public static class ジョーカー以外を作るテスト{
 		@DataPoints
