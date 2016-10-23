@@ -9,18 +9,18 @@ public class Trick {
 	private Hand gameCards_;
 	private int cardsNum_;
 	/**
-	 * トリックのカードのリセット
-	 */
-	public void reset(){
-		cardsNum_ = 0;
-		gameCards_ = new Hand();
-	}
-	/**
 	 * コンストラクタ
 	 */
 	public Trick(){
 		gameCards_ = new Hand();
 		cardsNum_ = 0;
+	}
+	/**
+	 * トリックのカードのリセット
+	 */
+	public void reset(){
+		cardsNum_ = 0;
+		gameCards_ = new Hand();
 	}
 	/**
 	 * 場にカード1枚置く
