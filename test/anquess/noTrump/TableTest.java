@@ -1,5 +1,6 @@
 package anquess.noTrump;
 
+import static anquess.noTrump.Number.*;
 import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -15,12 +16,12 @@ public class TableTest {
 	public void setUp(){
 		table = new Trick();
 		card = new Card[]{
-				new Card(SPADE,1),
-				new Card(SPADE,2),
-				new Card(SPADE,3),
-				new Card(SPADE,4),
-				new Card(SPADE,5),
-				new Card(SPADE,6),
+				new Card(SPADE,SAM),
+				new Card(SPADE,N3),
+				new Card(SPADE,N5),
+				new Card(SPADE,N6),
+				new Card(SPADE,N7),
+				new Card(SPADE,N8),
 		};
 	}
 

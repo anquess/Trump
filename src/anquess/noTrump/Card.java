@@ -1,6 +1,7 @@
 package anquess.noTrump;
 
-import static anquess.noTrump.Suit.*;
+import static anquess.noTrump.Number.*;
+
 
 /**
  * トランプのカード
@@ -9,24 +10,23 @@ import static anquess.noTrump.Suit.*;
  */
 public class Card implements Comparable<Card>{
 	private Suit suit_;
-	private int nUM_;
 	private Number num_;
 
 	/**
 	 * コンストラクタ
 	 * @param suit
-	 * @param nUM
+	 * @param num
 	 */
-	public Card(Suit suit,int nUM){
-		this.suit_	= suit;
-		this.nUM_	= nUM;
+	public Card(Suit suit,Number num){
+		suit_	= suit;
+		num_	= num;
 	}
 	/**
 	 * カードに書かれた数を取得
 	 * @return
 	 */
-	public int getNum() {
-		return nUM_;
+	public Number getNum() {
+		return num_;
 	}
 	/**
 	 * カードに書かれたスーツを取得
@@ -44,33 +44,26 @@ public class Card implements Comparable<Card>{
 		StringBuilder sb = new StringBuilder();
 		// suit
 		sb.append(suit_.toString());
-		numToString(sb);
+		sb.append(num_.toString());
 		return sb.toString();
 	}
+	/**
+	 * 引数のスートと同じなら切り札に設定する
+	 * @param suit 切り札のスート
+	 */
+	public void changeSpTrump(Suit suit){
+		if(this.suit_ == suit){
+			this.num_ = updateNumber(this.num_);
+		}
+		changedPatnerJack(suit);
+	}
 
-	private void numToString(StringBuilder sb) {
-		switch(nUM_){
-		case 0:
-			break;
-		case 1:
-			sb.append("A");
-			break;
-		case 10:
-			sb.append("T");
-			break;
-		case 11:
-			sb.append("J");
-			break;
-		case 12:
-			sb.append("Q");
-			break;
-		case 13:
-			sb.append("K");
-			break;
-		default:
-			sb.append(nUM_);
+	private void changedPatnerJack(Suit suit){
+		if(this.suit_.pareSuit() == suit){
+			num_ = TPJ;
 		}
 	}
+
 	/**
 	 * カードのスーツと数字が同じなら同じとする
 	 * オーバーライド
@@ -81,22 +74,18 @@ public class Card implements Comparable<Card>{
 		if(o == null) return false;
 		if(!(o instanceof Card)) return false;
 		Card card = (Card)o;
-		if((card.nUM_ == nUM_)&&(card.suit_ == suit_)) return true;
+		if((card.num_ == num_)&&(card.suit_ == suit_)) return true;
 		return false;
 	}
+
 	@Override
 	public int compareTo(Card o) {
-		if(o.equals(new Card(SPADE,1)))return -1;
-		if(this.equals(new Card(SPADE,1)))return 1;
-		if(o.equals(new Card(JOKER,0)))return -1;
-		if(suit_ == o.suit_){
-			if(nUM_ == 1){
-				return 1;
-			}else if(o.nUM_ == 1){
-				return -1;
-			}
-				return nUM_ -o.nUM_;
+		if((this.suit_ == o.suit_)||(isItTrumpCard(this))||isItTrumpCard(o)){
+			return this.num_.compareTo(o.num_);
 		}
 		return 1;
+	}
+	private boolean isItTrumpCard(Card o) {
+		return o.getNum().getLevel() > TRUMP_NUM;
 	}
 }

@@ -1,6 +1,7 @@
 package anquess.noTrump;
 
 import static anquess.noTrump.Hand.*;
+import static anquess.noTrump.Number.*;
 import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -25,15 +26,15 @@ public class HandTest {
 		@Before
 		public void setUp() {
 			hand	= new Hand();
-			Card card	= new Card(SPADE,1);
+			Card card	= new Card(SPADE,SAM);
 			hand.add(card);
-			card	= new Card(CLUB,1);
+			card	= new Card(CLUB,NA);
 			hand.add(card);
 		}
 
 		@Test
 		public void handにSAとCA加えてピックアップしてみる() {
-			Card expected	= new Card(SPADE,1);
+			Card expected	= new Card(SPADE,SAM);
 			assertThat(hand.size(),is(2));
 			Card actual = hand.pickUp(0);
 			assertThat(actual,is(expected));
@@ -42,7 +43,7 @@ public class HandTest {
 
 		@Test
 		public void handに配列で3枚追加して5になる(){
-			Card[] cards = {new Card(DIA,1),new Card(DIA,5),new Card(DIA,10)};
+			Card[] cards = {new Card(DIA,NA),new Card(DIA,N5),new Card(DIA,NT)};
 			hand.add(cards);
 			assertThat(hand.size(),is(5));
 		}
@@ -50,15 +51,15 @@ public class HandTest {
 		@Test
 		public void handにListで2枚追加して4になる(){
 			List<Card> cards = new ArrayList<Card>();
-			cards.add(new Card(DIA,1));
-			cards.add(new Card(DIA,5));
+			cards.add(new Card(DIA,NA));
+			cards.add(new Card(DIA,N5));
 			hand.add(cards);
 			assertThat(hand.size(),is(4));
 		}
 
 		@Test
 		public void handにSAとCA加えて見る() {
-			Card expected	= new Card(SPADE,1);
+			Card expected	= new Card(SPADE,SAM);
 			assertThat(hand.size(),is(2));
 			Card actual = hand.view(0);
 			assertThat(actual,is(expected));
@@ -69,7 +70,7 @@ public class HandTest {
 		@Test
 		public void handにSAとCA加えてtoStringしてみる() {
 			String actual = hand.toString();
-			String expected = "SA CA ";
+			String expected = "SAM CA ";
 			assertThat(actual,is(expected));
 		}
 	}
@@ -97,11 +98,11 @@ public class HandTest {
 
 		@DataPoints
 		public static Fixture PARAMs[] = {
-				new Fixture(0,new Card(CLUB,1)),
-				new Fixture(12,new Card(DIA,6)),
-				new Fixture(29,new Card(HEART,13)),
-				new Fixture(40,new Card(SPADE,3)),
-				new Fixture(41,new Card(JOKER,0)),
+				new Fixture(0,new Card(CLUB,N5)),
+				new Fixture(12,new Card(DIA,N7)),
+				new Fixture(29,new Card(HEART,NA)),
+				new Fixture(40,new Card(SPADE,N3)),
+				new Fixture(41,new Card(JOKER,SJK)),
 		};
 
 		@Theory
@@ -114,7 +115,7 @@ public class HandTest {
 		@Test
 		public void shuffleして1000回中1枚目がSAでないの100回以下(){
 			int saCount = 0;
-			Card clubA = new Card(CLUB,1);
+			Card clubA = new Card(CLUB,N5);
 			assertThat(trump.view(0),is(clubA));
 			for(int i = 0 ; i < 1000;i++){
 				trump.shuffle();
@@ -124,6 +125,7 @@ public class HandTest {
 			boolean actual = (saCount < 50);
 			boolean expected = true;
 			assertThat(msg,actual,is(expected));
+
 		}
 
 	}

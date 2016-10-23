@@ -1,5 +1,6 @@
 package anquess.noTrump;
 
+import static anquess.noTrump.Number.*;
 import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -17,14 +18,14 @@ public class PlayerTest {
 	@Before
 	public void setUp(){
 		player 		= new Player();
-		card_		= new Card(SPADE,1);
+		card_		= new Card(SPADE,SAM);
 		player.recieve(card_);
 		player.setName("Test");
 	}
 
 	@Test
 	public void カードを1枚受け取って1枚目を検証 (){
-		Card expected	= new Card(SPADE,1);
+		Card expected	= new Card(SPADE,SAM);
 		assertThat(player.getHandSize(),is(1));
 		Card actual = player.put(0);
 		assertThat(actual,is(expected));
@@ -33,7 +34,7 @@ public class PlayerTest {
 
 	@Test
 	public void カードを配列で2枚受け取って1枚目と2枚目を検証 (){
-		Card[] expected	= {new Card(SPADE,3),new Card(HEART,13)};
+		Card[] expected	= {new Card(SPADE,N3),new Card(HEART,NK)};
 		player.recieve(expected);
 		assertThat(player.getHandSize(),is(3));
 		Card actual = player.put(1);
@@ -46,8 +47,8 @@ public class PlayerTest {
 	@Test
 	public void カードをarrayListで2枚受け取って1枚目と2枚目を検証 (){
 		List<Card> expected	= new ArrayList<Card>();
-			expected.add(new Card(SPADE,3));
-			expected.add(new Card(HEART,13));
+			expected.add(new Card(SPADE,N3));
+			expected.add(new Card(HEART,NK));
 		player.recieve(expected);
 		assertThat(player.getHandSize(),is(3));
 		Card actual = player.put(1);

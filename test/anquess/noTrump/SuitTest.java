@@ -1,6 +1,7 @@
 package anquess.noTrump;
 
 
+import static anquess.noTrump.Number.*;
 import static anquess.noTrump.Suit.*;
 import static anquess.noTrump.SuitTest.Fixture.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -29,14 +30,14 @@ public class SuitTest {
 	public static class Fixture{
 		Suit suit_;
 		int count_;
-		int num_[];
+		Number num_[];
 
-		static final int[] JK_NUM		= {0};
-		static final int[] SP_NUM		= {1,5,6,7,8,9,10,11,12,13,3};
-		static final int[] OTHER_NUM	= {1,5,6,7,8,9,10,11,12,13};
+		static final Number[] JK_NUM		= {SJK};
+		static final Number[] SP_NUM		= {N5,N6,N7,N8,N9,NT,NJ,NQ,NK,SAM,N3};
+		static final Number[] OTHER_NUM	= {N5,N6,N7,N8,N9,NT,NJ,NQ,NK,NA};
 
 
-		Fixture(Suit suit,int count,int[] num){
+		Fixture(Suit suit,int count,Number[] num){
 			suit_	= suit;
 			count_	= count;
 			num_	= num;
@@ -58,8 +59,8 @@ public class SuitTest {
 	public void creatCardTest(Fixture p){
 		List<Card> cards = p.suit_.creatCards();
 		int i = 0;
-		for(int expected:p.num_){
-			int actual = cards.get(i).getNum();
+		for(Number expected:p.num_){
+			Number actual = cards.get(i).getNum();
 			assertThat(p.suit_.toString(),actual,is(expected));
 			i++;
 		}

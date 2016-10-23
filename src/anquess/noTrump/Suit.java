@@ -1,5 +1,7 @@
 package anquess.noTrump;
 
+import static anquess.noTrump.Number.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,16 +10,41 @@ import java.util.List;
  * @author anquess
  */
 public enum Suit{
-	CLUB,DIA,HEART,
+	CLUB{
+		@Override
+		public Suit pareSuit() {
+			return SPADE;
+		}
+	},
+	DIA{
+		@Override
+		public Suit pareSuit() {
+			return HEART;
+		}
+	},
+	HEART {
+		@Override
+		public Suit pareSuit() {
+			return DIA;
+		}
+	},
 	SPADE{
 		@Override
 		public List<Card> creatCards(){
 			List<Card> cards = super.creatCards();
-			cards.add(new Card(SPADE,3));
+			cards.remove(cards.size()-1);
+			cards.add(new Card(this,SAM));
+			cards.add(new Card(this,N3));
 			return cards;
+		}
+
+		@Override
+		public Suit pareSuit() {
+			return CLUB;
 		}
 	},
 	JOKER(){
+
 		@Override
 		public String toString(){
 			return "JK";
@@ -25,14 +52,20 @@ public enum Suit{
 		@Override
 		public List<Card> creatCards(){
 			List<Card> cards = new ArrayList<Card>();
-			cards.add(new Card(JOKER,0));
+			cards.add(new Card(JOKER,SJK));
 			return cards;
 		}
+		@Override
+		public Suit pareSuit() {
+			return null;
+		}
 	};
+	public abstract Suit pareSuit();
 	public List<Card> creatCards(){
 		List<Card> cards = new ArrayList<Card>();
-		cards.add(new Card(this,1));
-		for(int i = 5; i <= 13; i++)		cards.add(new Card(this,i));
+		for(Number num:Number.values()){
+			if((num != N3)&&(num .getLevel() < 20))cards.add(new Card(this,num));
+		}
 		return cards;
 	};
 	@Override

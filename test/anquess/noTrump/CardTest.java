@@ -1,5 +1,6 @@
 package anquess.noTrump;
 
+import static anquess.noTrump.Number.*;
 import static anquess.noTrump.Suit.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -17,8 +18,8 @@ public class CardTest {
 	public static class 同じカード{
 		@Test
 		public void 複数のスペードの1を同じと検証(){
-			Card actual = new Card(SPADE,1);
-			Card expected = new Card(SPADE,1);
+			Card actual = new Card(SPADE,SAM);
+			Card expected = new Card(SPADE,SAM);
 			assertThat(actual,is(expected));
 		}
 	}
@@ -26,20 +27,20 @@ public class CardTest {
 	public static class ジョーカー以外を作るテスト{
 		@DataPoints
 		public static Param[] PARAMs = {
-				new Param(SPADE,1,"SA"),
-				new Param(HEART,3,"H3"),
-				new Param(DIA,10,"DT"),
-				new Param(CLUB,11,"CJ"),
-				new Param(SPADE,12,"SQ"),
-				new Param(HEART,13,"HK"),
+				new Param(SPADE,SAM,"SAM"),
+				new Param(HEART,N3,"H3"),
+				new Param(DIA,NT,"DT"),
+				new Param(CLUB,NJ,"CJ"),
+				new Param(SPADE,NQ,"SQ"),
+				new Param(HEART,NK,"HK"),
 		};
 
 		static class Param{
 			Suit suit_;
-			int num_;
+			Number num_;
 			String msg_;
 
-			Param(Suit suit, int num,String msg){
+			Param(Suit suit, Number num,String msg){
 				suit_	= suit;
 				num_	= num;
 				msg_	= msg;
@@ -49,9 +50,9 @@ public class CardTest {
 
 		@Theory
 		public void 指定されたカードの数字を返す(Param p) {
-			int expected = p.num_;
+			Number expected = p.num_;
 			Card card = new Card(p.suit_,p.num_);
-			int actual = card.getNum();
+			Number actual = card.getNum();
 			assertThat(actual,is(expected));
 		}
 
@@ -76,18 +77,18 @@ public class CardTest {
 
 		@DataPoints
 		public static Fixture PARAMs[] = {
-				new Fixture("H5<H7",new Card(HEART,5),new Card(HEART,7),new Card(HEART,7)),
-				new Fixture("H7>H5",new Card(HEART,7),new Card(HEART,5),new Card(HEART,7)),
-				new Fixture("H5>S7",new Card(HEART,5),new Card(SPADE,7),new Card(HEART,5)),
-				new Fixture("S5>H7",new Card(SPADE,5),new Card(HEART,7),new Card(SPADE,5)),
-				new Fixture("H5<HA",new Card(HEART,5),new Card(HEART,1),new Card(HEART,1)),
-				new Fixture("HA>H5",new Card(HEART,1),new Card(HEART,5),new Card(HEART,1)),
-				new Fixture("HA<SA",new Card(HEART,1),new Card(SPADE,1),new Card(SPADE,1)),
-				new Fixture("SA>HA",new Card(SPADE,1),new Card(HEART,1),new Card(SPADE,1)),
-				new Fixture("HA<JK",new Card(HEART,1),new Card(JOKER,0),new Card(JOKER,0)),
-				new Fixture("JK>HA",new Card(JOKER,0),new Card(HEART,1),new Card(JOKER,0)),
-				new Fixture("SA>JK",new Card(SPADE,1),new Card(JOKER,0),new Card(SPADE,1)),
-				new Fixture("JK<SA",new Card(JOKER,0),new Card(SPADE,1),new Card(SPADE,1)),
+				new Fixture("H5<H7",new Card(HEART,N5),new Card(HEART,N7),new Card(HEART,N7)),
+				new Fixture("H7>H5",new Card(HEART,N7),new Card(HEART,N5),new Card(HEART,N7)),
+				new Fixture("H5>S7",new Card(HEART,N5),new Card(SPADE,N7),new Card(HEART,N5)),
+				new Fixture("S5>H7",new Card(SPADE,N5),new Card(HEART,N7),new Card(SPADE,N5)),
+				new Fixture("H5<HA",new Card(HEART,N5),new Card(HEART,NA),new Card(HEART,NA)),
+				new Fixture("HA>H5",new Card(HEART,NA),new Card(HEART,N5),new Card(HEART,NA)),
+				new Fixture("HA<SA",new Card(HEART,NA),new Card(SPADE,SAM),new Card(SPADE,SAM)),
+				new Fixture("SA>HA",new Card(SPADE,SAM),new Card(HEART,NA),new Card(SPADE,SAM)),
+				new Fixture("HA<JK",new Card(HEART,NA),new Card(JOKER,SJK),new Card(JOKER,SJK)),
+				new Fixture("JK>HA",new Card(JOKER,SJK),new Card(HEART,NA),new Card(JOKER,SJK)),
+				new Fixture("SA>JK",new Card(SPADE,SAM),new Card(JOKER,SJK),new Card(SPADE,SAM)),
+				new Fixture("JK<SA",new Card(JOKER,SJK),new Card(SPADE,SAM),new Card(SPADE,SAM)),
 		};
 
 		@Theory
