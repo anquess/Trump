@@ -51,7 +51,7 @@ public class Dealer {
 	 * トランプの枚数
 	 * @return トランプの数
 	 */
-	int trumpSize(){
+	public int trumpSize(){
 		return trump_.size();
 	}
 
